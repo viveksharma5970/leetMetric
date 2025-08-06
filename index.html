@@ -1,56 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LeetMetric</title>
-    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.4/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-DQvkBjpPgn7RC31MCQoOeC9TI2kdqa4+BSgNMNj8v77fdC77Kj5zpWFTJaaAoMbC" crossorigin="anonymous"> -->
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LeetMetric</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            heading: ['Poppins', 'sans-serif'],
+          },
+          colors: {
+            primaryBg: '#1f2937', // dark gray
+            gradientFrom: '#4f46e5',
+            gradientTo: '#9333ea',
+            cardYellow: '#facc15',
+          },
+        },
+      },
+    };
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet" />
 </head>
-<body>
-    <div class="container">
-        <!-- heading
-        user
-        stats -->
-        <h1>LeetMetric</h1>
-        <div class="user-container">
-            <p>Enter your username below:</p>
-            <div class="user-input-container">
-                <input type="text" placeholder="enter your username" class="form-control" id="user-input">
-                <button class="btn btn-danger" id="search-btn">Search</button>
-            </div>
-        </div>
-        <div class="stat-container">
+<body class="min-h-screen bg-gradient-to-br from-gradientFrom to-gradientTo text-white font-heading flex items-center justify-center px-4 py-8">
+  <div class="bg-primaryBg bg-opacity-90 p-8 rounded-xl shadow-2xl w-full max-w-3xl space-y-8">
+    <h1 class="text-4xl font-bold text-center text-white">🚀 LeetMetric</h1>
 
-            <div class="progress">
-                <div class="progress-item">
-                    <div class="easy-progress circle">
-                        <span id="easy-label"></span>
-                        <p>Easy</p>
-                    </div>
-                </div>
-    
-                <div class="progress-item">
-                    <div class="medium-progress circle">
-                        <span id="medium-label"></span>
-                        <p>Medium</p>
-                    </div>
-                </div>
-                
-                <div class="progress-item">
-                    <div class="hard-progress  circle">
-                        <span id="hard-label"></span>
-                        <p>Hard</p>
-                    </div>
-                </div>
-            </div>
-            <div class="stats-card">
-                <!-- directly populate card here from js -->
-            </div>
-        </div>
-        
+    <!-- Input -->
+    <div class="space-y-2">
+      <p class="text-lg text-gray-300">Enter your LeetCode username:</p>
+      <div class="flex gap-3">
+        <input
+          id="user-input"
+          type="text"
+          placeholder="e.g., vivek_codes"
+          class="w-full px-4 py-2 rounded-md text-black outline-none focus:ring-2 ring-indigo-500"
+        />
+        <button
+          id="search-btn"
+          class="bg-indigo-600 hover:bg-indigo-700 px-5 py-2 rounded-md text-white font-semibold transition"
+        >
+          Search
+        </button>
+      </div>
     </div>
-    
-    <script src="script.js"></script>
+
+    <!-- Progress Circles -->
+    <div class="flex justify-evenly flex-wrap gap-6">
+      <div class="flex flex-col items-center space-y-2">
+        <div
+          id="easy-progress"
+          class="w-28 h-28 rounded-full border-4 border-green-400 shadow-inner flex flex-col items-center justify-center font-bold text-white"
+          style="--progress-degree: 0%; background: conic-gradient(#34d399 var(--progress-degree), #1f2937 0%)"
+        >
+          <span id="easy-label">0/0</span>
+        </div>
+        <p class="text-sm text-green-300">Easy</p>
+      </div>
+
+      <div class="flex flex-col items-center space-y-2">
+        <div
+          id="medium-progress"
+          class="w-28 h-28 rounded-full border-4 border-yellow-400 shadow-inner flex flex-col items-center justify-center font-bold text-white"
+          style="--progress-degree: 0%; background: conic-gradient(#facc15 var(--progress-degree), #1f2937 0%)"
+        >
+          <span id="medium-label">0/0</span>
+        </div>
+        <p class="text-sm text-yellow-300">Medium</p>
+      </div>
+
+      <div class="flex flex-col items-center space-y-2">
+        <div
+          id="hard-progress"
+          class="w-28 h-28 rounded-full border-4 border-red-400 shadow-inner flex flex-col items-center justify-center font-bold text-white"
+          style="--progress-degree: 0%; background: conic-gradient(#f87171 var(--progress-degree), #1f2937 0%)"
+        >
+          <span id="hard-label">0/0</span>
+        </div>
+        <p class="text-sm text-red-300">Hard</p>
+      </div>
+    </div>
+
+    <!-- Stats Cards -->
+    <div class="stats-card flex flex-wrap justify-evenly gap-6 mt-4 mb-4">
+      <!-- cards injected via JS -->
+    </div>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
